@@ -1,4 +1,4 @@
-package java.uv.mx.Recetario.model;
+package uv.mx.javc.Recetario.dto;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Recipe {
+public class RecipeDTO {
     private long id;
     private String title;
     private String description;

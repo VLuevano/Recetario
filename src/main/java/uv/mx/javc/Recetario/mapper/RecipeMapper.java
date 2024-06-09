@@ -1,11 +1,14 @@
-package java.uv.mx.Recetario.mapper;
+package uv.mx.javc.Recetario.mapper;
 
+import org.mapstruct.InjectionStrategy;
+import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import java.uv.mx.Recetario.dto.CreateRecipeDTO;
-import java.uv.mx.Recetario.dto.RecipeDTO;
-import java.uv.mx.Recetario.model.Recipe;
+import uv.mx.javc.Recetario.dto.CreateRecipeDTO;
+import uv.mx.javc.Recetario.dto.RecipeDTO;
+import uv.mx.javc.Recetario.model.Recipe;
 
+@Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface RecipeMapper {
     // source: Recipe
     // target: RecipeDTO
@@ -16,6 +19,6 @@ public interface RecipeMapper {
     // target: Recipe -> al objeto de salida
     // En el target se va a ignorar el atributo "id"
     @Mapping(target = "id", ignore = true)
-    @Mapping(source = "definition", target = "description" )
+    @Mapping(source = "description", target = "description" )
     Recipe toModel(CreateRecipeDTO dto);
 }

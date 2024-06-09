@@ -1,4 +1,4 @@
-package java.uv.mx.Recetario.dto;
+package uv.mx.javc.Recetario.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

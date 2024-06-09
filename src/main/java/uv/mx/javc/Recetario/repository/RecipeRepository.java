@@ -1,9 +1,9 @@
-package java.uv.mx.Recetario.repository;
+package uv.mx.javc.Recetario.repository;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.uv.mx.Recetario.model.Recipe;
+import uv.mx.javc.Recetario.model.Recipe;
 
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +18,7 @@ public class RecipeRepository {
     }
 
     public Recipe save(Recipe data) {
-        data.setId(currentId);
+        data.setId(currentId++);
         recipes.add(data);
         return data;
     }
@@ -28,7 +28,6 @@ public class RecipeRepository {
     }
 
     public Optional<Recipe> getById(long id) {
-
         for (Recipe recipe : recipes) {
             if (recipe.getId() == id) {
                 return Optional.of(recipe);
@@ -37,11 +36,11 @@ public class RecipeRepository {
         return Optional.empty();
     }
 
-    public void update(long id, Recipe data) {
+    public Optional<Recipe> update(long id, Recipe data) {
         Optional<Recipe> entry = getById(id);
 
         if (!entry.isPresent()) {
-            return;
+            return Optional.empty();
         }
 
         Recipe recipe = entry.get();
@@ -62,5 +61,10 @@ public class RecipeRepository {
             recipe.setSteps(data.getSteps());
         }
 
+        return Optional.of(recipe);
+    }
+
+    public boolean delete(long id) {
+        return recipes.removeIf(recipe -> recipe.getId() == id);
     }
 }

@@ -1,4 +1,4 @@
-package java.uv.mx.Recetario;
+package uv.mx.javc.Recetario;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

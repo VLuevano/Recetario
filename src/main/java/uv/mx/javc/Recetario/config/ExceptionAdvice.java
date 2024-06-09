@@ -1,8 +1,8 @@
-package java.uv.mx.Recetario.config;
+package uv.mx.javc.Recetario.config;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.uv.mx.Recetario.dto.ErrorDTO;
+import uv.mx.javc.Recetario.dto.ErrorDTO;
 
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;

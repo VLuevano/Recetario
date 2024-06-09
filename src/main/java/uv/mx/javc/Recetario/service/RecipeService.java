@@ -1,12 +1,13 @@
-package java.uv.mx.Recetario.service;
+package uv.mx.javc.Recetario.service;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.uv.mx.Recetario.dto.CreateRecipeDTO;
-import java.uv.mx.Recetario.dto.RecipeDTO;
-import java.uv.mx.Recetario.mapper.RecipeMapper;
-import java.uv.mx.Recetario.model.Recipe;
-import java.uv.mx.Recetario.repository.RecipeRepository;
+import java.util.Optional;
+import uv.mx.javc.Recetario.dto.CreateRecipeDTO;
+import uv.mx.javc.Recetario.dto.RecipeDTO;
+import uv.mx.javc.Recetario.mapper.RecipeMapper;
+import uv.mx.javc.Recetario.model.Recipe;
+import uv.mx.javc.Recetario.repository.RecipeRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,6 @@ public class RecipeService {
 
     @Autowired
     private RecipeMapper recipeMapper;
-
 
     public List<RecipeDTO> getAll() {
         List<Recipe> recipes = recipeRepository.getAll();
@@ -33,6 +33,15 @@ public class RecipeService {
     public RecipeDTO save(CreateRecipeDTO data) {
         Recipe model = recipeMapper.toModel(data);
         return recipeMapper.toDTO(recipeRepository.save(model));
+    }
 
+    public Optional<RecipeDTO> update(long id, CreateRecipeDTO data) {
+        Recipe model = recipeMapper.toModel(data);
+        return recipeRepository.update(id, model)
+                .map(recipeMapper::toDTO);
+    }
+
+    public boolean delete(long id) {
+        return recipeRepository.delete(id);
     }
 }
