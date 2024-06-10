@@ -33,14 +33,14 @@ public class RecipeController {
     }
 
     @PutMapping("/updateRecipe/{id}")
-    public Optional<RecipeDTO> update(@PathVariable long id, @Valid @RequestBody CreateRecipeDTO data) {
+    public Optional<RecipeDTO> update(@PathVariable String id, @Valid @RequestBody CreateRecipeDTO data) {
         log.info("Ejecutando la actualización de una receta con id: {}", id);
         log.info(data.toString());
         return recipeService.update(id, data);
     }
 
     @DeleteMapping("/deleteRecipe/{id}")
-    public boolean delete(@PathVariable long id) {
+    public boolean delete(@PathVariable String id) {
         log.info("Ejecutando la eliminación de una receta con id: {}", id);
         return recipeService.delete(id);
     }
