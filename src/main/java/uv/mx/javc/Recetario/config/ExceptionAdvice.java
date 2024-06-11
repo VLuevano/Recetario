@@ -18,7 +18,6 @@ public class ExceptionAdvice {
         List<FieldError> fieldErrors = ex.getBindingResult().getFieldErrors();
         List<String> errors = new LinkedList<>();
 
-        // Extraer los mensajes de error de la excepción
         for (FieldError fieldError : fieldErrors) {
             errors.add(fieldError.getDefaultMessage());
         }
