@@ -1,11 +1,9 @@
-FROM openjdk:11
+FROM eclipse-temurin:21-jdk
 
 WORKDIR /app
 
-COPY ..
+COPY build/libs/Recetario-0.0.1-SNAPSHOT.jar /app/Recetario-0.0.1-SNAPSHOT.jar
 
-RUN npm install
-
-EXPOSE 3080
+EXPOSE 8080
 
 CMD ["java", "-jar", "Recetario-0.0.1-SNAPSHOT.jar"]
